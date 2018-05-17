@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/layout_background"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <ImageView
+        android:id="@+id/correctimg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/votedimg"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_toLeftOf="@+id/fullanswer"
+        android:layout_toStartOf="@+id/fullanswer"
+        android:src="@drawable/tickfilled" />
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/answeredBy"
+        android:layout_alignStart="@+id/fullanswer"
+        android:layout_above="@+id/correctimg"
+        android:textStyle="normal|italic"
+        android:text="username321"
+        android:layout_alignLeft="@+id/fullanswer"/>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="280dp"
+        android:layout_below="@+id/answeredBy"
+        android:id="@+id/fullanswer"
+        android:text="Here is my answer to this question."
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp" />
+
+    <ImageView
+        android:id="@+id/votedimg"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/voteText"
+        android:layout_toRightOf="@+id/voteText"
+        android:onClick="doList"
+        android:src="@drawable/unfilled" />
+
+    <TextView
+        android:id="@+id/voteText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/answeredBy"
+        android:layout_alignBottom="@+id/answeredBy"
+        android:layout_alignLeft="@+id/correctimg"
+        android:layout_alignStart="@+id/correctimg"
+        android:gravity="right"
+        android:text="10"
+        android:textStyle="normal|bold" />
+
+</RelativeLayout>

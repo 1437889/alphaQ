@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/layout_background">
+
+    <TextView
+        android:id="@+id/answeredBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView2"
+        android:layout_toEndOf="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView2"
+        android:text="username123"
+        android:textSize="18sp"
+        android:textStyle="normal|italic" />
+
+    <ImageView
+        android:src="@drawable/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/body"
+        android:layout_marginTop="13dp"
+        android:layout_alignLeft="@+id/body" />
+
+    <ImageView
+        android:id="@+id/votedImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/body"
+        android:layout_alignEnd="@+id/body"
+        android:layout_alignRight="@+id/body"
+        android:onClick="updateVote"
+        android:src="@drawable/unfilled" />
+
+
+    <TextView
+        android:id="@+id/votesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/qTitle"
+        android:layout_toStartOf="@+id/votedImage"
+        android:text="10"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_toLeftOf="@+id/votedImage" />
+
+    <TextView
+        android:text="This is my question."
+        android:layout_height="wrap_content"
+        android:id="@+id/qTitle"
+        android:textStyle="normal|bold"
+        android:textSize="24sp"
+        android:layout_width="320dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:text="OK HERE IS MY QUESTION"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/body"
+        android:textSize="16sp"
+        android:textAllCaps="false"
+        android:layout_below="@+id/qTitle"
+        android:layout_alignStart="@+id/qTitle"
+        android:layout_marginTop="11dp"
+        android:layout_alignEnd="@+id/qTitle"
+        android:layout_alignLeft="@+id/qTitle"
+        android:layout_alignRight="@+id/qTitle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:id="@+id/scrollAnswers"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignParentLeft="true">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:id="@+id/answerLinLayout"/>
+    </ScrollView>
+
+    <ImageView
+        android:src="@drawable/answer"
+        android:layout_width="30dp" android:onClick="postAnswer"
+        android:layout_height="30dp"
+        android:id="@+id/imageView4"
+        android:layout_below="@+id/body"
+        android:layout_alignEnd="@+id/body"
+        android:layout_alignRight="@+id/body" />
+
+</RelativeLayout>
