@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
     public void signIn(View view) {
 
         ContentValues params = new ContentValues();
-        params.put("", "");
         final String enteredPassword = ((EditText) findViewById(R.id.psswd)).getText().toString();
+        final String enteredusername = ((EditText) findViewById(R.id.user)).getText().toString();
 
         @SuppressLint("StaticFieldLeak") AsyncHTTPPost asyncHTTPPost = new AsyncHTTPPost(
                 "http://lamp.ms.wits.ac.za/~s1619336/signin.php?username=" + ((EditText) findViewById(R.id.user)).getText().toString(), params) {
@@ -42,8 +43,10 @@ public class MainActivity extends AppCompatActivity {
                     String username = arr.getJSONObject(0).getString("USER_NAME");
 
 
-                    if (password.equals(enteredPassword)) {
-                        Toast.makeText(getBaseContext(), "SIGN IN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                    if (password.equals(enteredPassword) && username.equals(enteredusername)) {
+                        Toast t1 = Toast.makeText(getApplicationContext(), "SIGN IN SUCCESSFUL", Toast.LENGTH_SHORT);
+                        t1.setGravity(Gravity.CENTER, 0, 0);
+                        t1.show();
 
                         Intent i = new Intent(getBaseContext(), questions.class);
                         i.putExtra("USER_FNAME", name);
@@ -51,7 +54,9 @@ public class MainActivity extends AppCompatActivity {
                         i.putExtra("USER_NAME", username);
                         startActivity(i);
                     } else {
-                        Toast.makeText(getBaseContext(), "PASSWORD IS INCORRECT", Toast.LENGTH_SHORT).show();
+                        Toast t2 = Toast.makeText(getApplicationContext(), "PASSWORD IS INCRRECT", Toast.LENGTH_SHORT);
+                        t2.setGravity(Gravity.CENTER, 0, 0);
+                        t2.show();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

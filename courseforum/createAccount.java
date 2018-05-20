@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -31,14 +32,21 @@ public class createAccount extends AppCompatActivity {
         params.put("fname",name);
         params.put("lname",surname);
 
-        String address = "http://lamp.ms.wits.ac.za/~s1619336/create.php";
-
-        @SuppressLint("StaticFieldLeak") AsyncHTTPPost asyncHTTPPost = new AsyncHTTPPost(address, params) {
+        @SuppressLint("StaticFieldLeak") AsyncHTTPPost asyncHTTPPost = new AsyncHTTPPost("http://lamp.ms.wits.ac.za/~s1619336/create.php", params) {
             @Override
             protected void onPostExecute(String output) {
-                if (output!=null){
-                    Toast.makeText(getApplicationContext(), "Account Was Successfully Created", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getBaseContext(), questions.class);
+                if (!output.isEmpty()) {
+                    Toast t1 = Toast.makeText(getApplicationContext(), "Account Was Successfully Created", Toast.LENGTH_SHORT);
+                    t1.setGravity(Gravity.CENTER, 0, 0);
+                    t1.show();
+                }
+
+
+                    if (!output.isEmpty()){
+                        Toast t2 = Toast.makeText(getApplicationContext(), "Sign in to confirm",Toast.LENGTH_SHORT);
+                        t2.setGravity(Gravity.CENTER,0,0);
+                        t2.show();
+                    Intent i = new Intent(getBaseContext(), MainActivity.class);
                     startActivity(i);
                 }
                 else {
