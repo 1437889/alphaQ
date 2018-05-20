@@ -1,0 +1,20 @@
+<?php
+$username = "s1619336";
+$password = "s1619336";
+$database = "d1619336";
+$link = mysqli_connect("127.0.0.1", $username, $password, $database);
+$output=array();
+$question_id = $_REQUEST["question_id"];
+
+
+if(!isset($question_id)){
+        $output["result"]="You didn't send the required values";
+        echo json_encode($output);
+        die();
+}
+
+$result = mysqli_query($link, "SELECT * FROM VOTE_QUESTION WHERE QUESTION_ID='$question_id'");
+$rowcount=mysqli_num_rows($result);
+echo ($rowcount);
+mysqli_close($link);
+?>

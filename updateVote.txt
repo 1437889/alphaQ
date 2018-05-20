@@ -1,0 +1,22 @@
+<?php
+$username = "s1619336";
+$password = "s1619336";
+$database = "d1619336";
+$link = mysqli_connect("127.0.0.1", $username, $password, $database);
+$output=array();
+$user = $_REQUEST["user"];
+$question_id = $_REQUEST["question_id"];
+
+
+if(!isset($user, $question_id)){
+        $output["result"]="You didn't send the required values";
+        echo json_encode($output);
+        die();
+}
+
+$result = mysqli_query($link, "INSERT INTO VOTE_QUESTION (USER_NAME, QUESTION_ID) VALUES ('$user','$question_id')");
+
+$output["result"]=$result;
+mysqli_close($link);
+echo json_encode($output);
+?>
